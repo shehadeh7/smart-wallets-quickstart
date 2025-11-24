@@ -98,3 +98,11 @@ npm run lint    # lint code
 ## 🛂 License
 
 MIT
+
+## Testing Steps
+1. Create a burner email through https://temp-mail.org/en/view/6923c5e9d4f26d006aadab17 or some other site
+2. Run the local app (clear .data if needed, but i dont think it's necessary)
+3. Once logged in, user will have a wallet address. Go to https://faucet.circle.com/ to fund the wallet address with USDC
+4. You can now subscribe (you can actually subscribe without funding, but ideally shouldn't allow subscription without money in account)
+5. Can run the merchant script once subscribed with `npx ts-node scripts/merchant-test.ts`
+6. View the transactions logs in sepolia etherscas
