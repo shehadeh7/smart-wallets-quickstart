@@ -1,3 +1,4 @@
+// src/app/page.tsx - UPDATED VERSION
 "use client";
 
 import { useSignerStatus } from "@account-kit/react";
@@ -6,6 +7,7 @@ import NftMintCard from "./components/nft-mint-card";
 import LoginCard from "./components/login-card";
 import Header from "./components/header";
 import LearnMore from "./components/learn-more";
+import SubscriptionCard from "./components/subscription-card"; // NEW
 
 export default function Home() {
   const signerStatus = useSignerStatus();
@@ -19,9 +21,10 @@ export default function Home() {
             <div className="grid gap-8 md:grid-cols-[1fr_2fr]">
               <div className="flex flex-col gap-8">
                 <UserInfoCard />
+                <SubscriptionCard /> {/* NEW: Add subscription card */}
                 <LearnMore />
               </div>
-              <NftMintCard />
+              {/* <NftMintCard /> */}
             </div>
           ) : (
             <div className="flex justify-center items-center h-full pb-[4rem]">
