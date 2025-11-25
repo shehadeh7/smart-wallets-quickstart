@@ -85,6 +85,12 @@ export default function SubscriptionCard() {
       return;
     }
 
+    const userConsents = confirm(
+      "By subscribing, you authorize Netflix to charge up to $10 per month from your smart account. You can pause or cancel anytime."
+    );
+    
+    if (!userConsents) return;    
+
     setLoading(true);
     try {
       // Step 1: Create session (persisted private key + derived address on server)
