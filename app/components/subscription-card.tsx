@@ -296,9 +296,9 @@ export default function SubscriptionCard() {
         body: JSON.stringify({ userId: user?.userId }),
       });
       // Not strictly required if your uninstall flow uses fixed ids
-      const { sessionKeyAddress, sessionKeyEntityId } = sessionKeyResponse.ok
+      const { sessionKeyAddress, validationEntityId } = sessionKeyResponse.ok
         ? await sessionKeyResponse.json()
-        : { sessionKeyAddress: status.sessionKey, sessionKeyEntityId: 2 }; // fallback
+        : { sessionKeyAddress: status.sessionKey, validationEntityId: 2 }; // fallback
 
       const extendedClient = client.extend(installValidationActions);
 
@@ -311,9 +311,9 @@ export default function SubscriptionCard() {
       // Uninstall the validation module and hooks
       const result = await extendedClient.uninstallValidation({
         moduleAddress: getDefaultSingleSignerValidationModuleAddress(sepolia),
-        entityId: sessionKeyEntityId,
+        entityId: validationEntityId,
         uninstallData: SingleSignerValidationModule.encodeOnUninstallData({
-          entityId: sessionKeyEntityId,
+          entityId: validationEntityId,
         }),
         hookUninstallDatas: [
           hookUninstallData, // Validation hook
